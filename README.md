@@ -1,16 +1,20 @@
 # Sort And Search
 排序與搜尋的演算法整理
 
+<br/><br/>
+
 Version 
 ---
 >v1.0.0<br/>
 >August 7, 2017 Released
+
 <br/><br/>
 
 Feature
 ---
 >針對 int 陣列整理了比較常見的排序演算法<br/>
 >針對 IComparable 泛型整理了比較實用的排序演算法
+
 <br/><br/>
 
 Usage
