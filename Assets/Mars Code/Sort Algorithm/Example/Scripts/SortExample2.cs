@@ -15,7 +15,7 @@ public class SortExample2 : SortExample1
         data = new List<MyComparableClass>();
 
         for(int i = 0; i < max; i++)
-            data.Add(new MyComparableClass(i, Random.Range(0, 100)));
+            data.Add(new MyComparableClass(Random.Range(0, 100)));
 
         SetText(GetNumberArray(data), sourceText);
 
@@ -31,7 +31,7 @@ public class SortExample2 : SortExample1
         var data = new int[input.Count];
         for(int i = 0; i < data.Length; i++)
         {
-            data[i] = input[i].Value;
+            data[i] = input[i].value;
         }
 
         return data;

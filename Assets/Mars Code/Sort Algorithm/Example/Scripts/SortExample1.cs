@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class SortExample1 : MonoBehaviour
@@ -25,7 +23,7 @@ public class SortExample1 : MonoBehaviour
         SetText(data, sourceText);
 
         // 在這裡可以實例化不同的排序演算法
-        ISortAlgorithm sort = new QuickSort();
+        ISortAlgorithm sort = new HeapSort();
         sort.Sort(data);
 
         SetText(data, sortedText);
