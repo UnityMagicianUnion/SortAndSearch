@@ -20,9 +20,11 @@
 *   - 資料長度很大的時候
 *   
 * 用法
-*   引用 ListSortExtension
+*   引用 ListSortAlgorithm
 *   泛型 T 必須實作 IComparable 介面
-*   ex-> list.HeapSort() 即可使用堆積排序法進行排序
+*   
+*   ex:使用堆積排序法進行排序
+*   -> list.HeapSort();
 **************************************************/
 
 namespace ListSortAlgorithm
@@ -45,14 +47,14 @@ namespace ListSortAlgorithm
         }
 
 
-        // 快速排序法
+        #region >>  快速排序法
+
         public static void QuickSort<T>(this List<T> data) where T : IComparable<T>
         {
             QuickSort(data, 0, data.Count - 1);
         }
 
 
-        // 快速排序法子功能
         static void QuickSort<T>(List<T> data, int left, int right) where T : IComparable<T>
         {
             if(left >= right)
@@ -76,14 +78,16 @@ namespace ListSortAlgorithm
                     Swap(data, i, j);
             }
 
-            // 將基準物件與 i 物件交換
-            Swap(data, i, right);
+            Swap(data, i, right);           // 調換指標元素與 i 元素
             QuickSort(data, left, i - 1);   // 切割指標 i 左側物件的遞迴排序
             QuickSort(data, i + 1, right);  // 切割指標 i 右側物件的遞迴排序
         }
 
+        #endregion
 
-        // 插入排序法
+
+        #region >>  插入排序法
+
         public static void InsertionSort<T>(this List<T> data) where T : IComparable<T>
         {
             var n = data.Count;
@@ -110,8 +114,11 @@ namespace ListSortAlgorithm
             }
         }
 
+        #endregion
 
-        // 希爾排序法
+
+        #region >>  希爾排序法
+
         public static void ShellSort<T>(this List<T> data) where T : IComparable<T>
         {
             var n = data.Count;
@@ -145,11 +152,14 @@ namespace ListSortAlgorithm
             }
         }
 
+        #endregion
 
-        // 堆積排序法
+
+        #region >>  堆積排序法
+
         public static void HeapSort<T>(this List<T> data) where T : IComparable<T>
         {
-            int n = data.Count;
+            var n = data.Count;
 
             // 取得最後一個父節點 p，並且逐左將資料轉化為最大堆積樹
             for(var p = (n / 2) - 1; p >= 0; p--)
@@ -168,15 +178,14 @@ namespace ListSortAlgorithm
         }
 
 
-        // 堆積排序法子功能
         static void MaxHeapify<T>(List<T> data, int parent, int range) where T : IComparable<T>
         {
             // 預設最大值位於父結點
-            int max = parent;
+            var max = parent;
 
             // 取得左右子樹的索引
-            int leafL = parent * 2 + 1;
-            int leafR = parent * 2 + 2;
+            var leafL = parent * 2 + 1;
+            var leafR = parent * 2 + 2;
 
             // 與左子樹比較取得最大值
             if(leafL < range && data[leafL].CompareTo(data[max]) > 0)
@@ -194,6 +203,8 @@ namespace ListSortAlgorithm
                 MaxHeapify(data, max, range);
             }
         }
+
+        #endregion
 
     }
 
